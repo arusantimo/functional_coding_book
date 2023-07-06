@@ -1,4 +1,5 @@
-# functional_coding_book
+# functional_coding_book  
+
 [NC FE] 쏙쏙 들어오는 함수형 코딩 스터디 저장소
 
 > 총 2개의 파트 17(19)개의 챕터로 구성 
