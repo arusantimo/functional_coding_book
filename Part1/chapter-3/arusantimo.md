@@ -32,3 +32,89 @@
 3. 액션 안에서 유닛 테스트 할수 있는 깔끔한 순수함수(계산)을 빼낼수 있는지 확인해 본다.
 4. 데이터는 기록의 상태이기 때문에 순수함수로 빼낼수 없는 형태이면, 기록의 상태로 즉 데이터로 액션을 쪼갤수 있다.
 
+```js
+import "./styles.css";
+
+document.getElementById("app").innerHTML = `
+<h1>현재 시각 우리 동네 날씨 알기.</h1>
+`;
+
+const sendWeather = () =>
+  new Promise((resolve, reject) => {
+    setTimeout(function () {
+      resolve("비가 억수로 옴 ");
+    }, 250);
+  });
+
+const sendLocation = () =>
+  new Promise((resolve, reject) => {
+    setTimeout(function () {
+      resolve("1001 ");
+    }, 250);
+  });
+
+// 1. 우리동네 주소 요청을 위한 정보 알기
+// 2. 주소 정보로 기상청 데이터 요청
+// 3. 받아온 데이터를 화면에 표현
+
+async function legacy_getLoactionInfo(addr) {
+  const addrNum = addr.split(" ")[3];
+  const enableAddrList = ["911-99", "911-10"];
+  const enable = enableAddrList.includes(addrNum);
+  if (enable) {
+    const location = await sendLocation(addrNum);
+    return location;
+  }
+  return null;
+}
+
+async function getWeather(location) {
+  const weather = await sendWeather(location);
+  return weather;
+}
+
+async function legacy_renderWeather(addr) {
+  document.getElementById("app").append("우리 동네 날씨는?");
+  const location = await legacy_getLoactionInfo(addr);
+  const weather = await getWeather(location);
+  document.getElementById("app").append(weather);
+}
+
+// legacy_renderWeather("서울시 관악구 관악로 911-99");
+
+// 새로 짜보기 *(데이터(기록) 순수함수 더 사용해서)
+
+// 데이터
+const outputText = {
+  myLocation: "",
+  wearther: ""
+}; // 타입 스크립트면 더 좋음.
+
+// 순수 함수
+const getAddrNum = (addr) => addr.split(" ")[3];
+const checkEnable = (addrNum, dic) => dic.includes(addrNum);
+const getWeaterText = (fullAddr, textObj) =>
+  `${fullAddr} :: ${textObj.myLocation} : ${textObj.wearther}`;
+
+// 액션
+async function getLoactionInfo(addrNum) {
+  const location = await sendLocation(addrNum);
+  return location;
+}
+
+async function renderWeather(addr) {
+  const addrNum = getAddrNum(addr);
+
+  outputText.myLocation = checkEnable(addrNum, ["911-99", "911-10"])
+    ? await getLoactionInfo(addrNum)
+    : "알수 없음";
+  outputText.wearther = await getWeather(outputText.myLocation);
+
+  const text = getWeaterText(addr, outputText);
+
+  document.getElementById("app").append(text);
+}
+
+renderWeather("서울시 관악구 관악로 911-99");
+
+```
