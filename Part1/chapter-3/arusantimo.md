@@ -19,3 +19,8 @@
 4. 이메일 보내기 위한 추천 수에 맞는 쿠폰 발송 데이터 구조 만들기
 5. 데이터 베이스를 통해 사용자 에게 이메일 발송
    
+<img width="250" alt="image" src="https://github.com/arusantimo/functional_coding_book/assets/4675672/0c6a6d04-9727-4f4e-a5dd-211741ffe833">
+
+
+데이터를 조회 할때 쿠폰을 보내야 하는 유저로 필터링 하는 쿼리 과정이 있으면 불필요한 계산이 생략될수 있다.  
+
