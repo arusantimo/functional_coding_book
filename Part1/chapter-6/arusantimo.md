@@ -30,6 +30,9 @@ const copy2 = {...target};
 // 깊은 복사  
 const list2 = JSON.parse(JSON.stringify([]));
 const copy3 = JSON.parse(JSON.stringify(target));
+
+structuredClone
+
 // 문제점 
 // 비용이 많이듬.
 // 참조 오류 날씨 바로 런타임 오류 발생.
