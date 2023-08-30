@@ -89,3 +89,36 @@ function capitalizeName (user) {
 
 
 ### 재귀와 반복문
+<img width="400" alt="스크린샷 2023-08-30 오전 9 08 01" src="https://github.com/arusantimo/functional_coding_book/assets/22004468/9295312c-86d4-4dda-89a1-055d430e219e">
+
+### 꼬리재귀
+너무 많은 재귀 호출은 메모리 초과 (Stack overflow) 오류를 발생시킬 수 있다.    
+이런 단점을 해결해주는 꼬리재귀        
+**사용 전 컴파일러가 꼬리재귀 기능을 제공하는지 알고 사용해야한다**
+
+일반 재귀를 사용한 팩토리얼 함수 예시
+
+```javascript
+function factorial(n) {
+    if (n === 1) {
+        return 1;
+    }
+    return n * factorial(n-1);
+}
+```
+factorial(3) 을 실행했을때 벌어지는 일
+<img width="400" alt="스크린샷 2023-08-30 오전 9 11 06" src="https://github.com/arusantimo/functional_coding_book/assets/22004468/b3cb4194-24a6-4bf1-b81c-4843f0046bb6">
+
+
+```javascript
+function factorial(n, total = 1){
+    if(n === 1){
+        return total;
+    }
+    return factorial(n - 1, n * total);
+}
+```
+<img width="400" alt="스크린샷 2023-08-30 오전 9 12 51" src="https://github.com/arusantimo/functional_coding_book/assets/22004468/aa401230-3126-44ec-9096-879c57a64565">
+
+
+
