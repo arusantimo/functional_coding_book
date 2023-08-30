@@ -106,10 +106,11 @@ function factorial(n) {
     return n * factorial(n-1);
 }
 ```
-factorial(3) 을 실행했을때 벌어지는 일
+
+factorial(3) 을 실행했을때 벌어지는 일            
 <img width="400" alt="스크린샷 2023-08-30 오전 9 11 06" src="https://github.com/arusantimo/functional_coding_book/assets/22004468/b3cb4194-24a6-4bf1-b81c-4843f0046bb6">
 
-
+    
 ```javascript
 function factorial(n, total = 1){
     if(n === 1){
@@ -118,6 +119,7 @@ function factorial(n, total = 1){
     return factorial(n - 1, n * total);
 }
 ```
+    
 <img width="400" alt="스크린샷 2023-08-30 오전 9 12 51" src="https://github.com/arusantimo/functional_coding_book/assets/22004468/aa401230-3126-44ec-9096-879c57a64565">
 
 
