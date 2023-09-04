@@ -68,7 +68,7 @@ function update_total_dom(total) {
 2. 가독성 있고, block한 코드 실행을 위해 async await문버을 활용.
 3. 테스크큐 우선순위를 활용
 4. 하나의 액션에 활용되는 휘발용 객체를 활용하면 좋음.
-5. 하나의 큰 코루틴 구조로 타임라인을 설계하면 좋음. (그안에서 활용) async await, generator yeild
+5. 하나의 큰 코루틴 구조로 타임라인을 설계하면 좋음. (그안에서 활용) async await, generator yeild **제어권
 
 https://github.com/arusantimo/Archive_JJ/wiki/Promise-U-~#but-%EC%BD%9C%EB%B0%B1--%ED%94%84%EB%A1%9C%EB%AF%B8%EC%8A%A4
 
