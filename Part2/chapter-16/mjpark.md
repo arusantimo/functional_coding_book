@@ -13,7 +13,7 @@
 
 ### DOM이 업데이트되는 순서를 보장해야 한다
 
-특정 순서로 DOM을 업데이트 해야 문제가 않는다. (클릭한 순서대로)
+특정 순서로 DOM을 업데이트 해야 문제가 생기지않는다. (클릭한 순서대로)
 
 Queue를 사용하면 순서대로 작업을 꺼내 쓸 수 있기 때문에, 같은 타임라인에서 처리됨
 
@@ -57,9 +57,14 @@ function calc_cart_worker(cart, done) {
 }
 
 var update_total_queue = Queue(calc_cart_worker);
+
+function add_item_to_cart(item) {
+  cart = add_item(cart, item);
+  update_total_queue(cart);
+}
 ```
 
-DOM을 공유하는 문제는 같으 ㄴ타임라인에서 처리하도록 수정하면서 순서 문제가 발생하지 않는다.
+DOM을 공유하는 문제는 같은 타임라인에서 처리하도록 수정하면서 순서 문제가 발생하지 않는다.
 
 ![Alt text](./assets/timeline.png)
 
@@ -77,7 +82,7 @@ DOM을 공유하는 문제는 같으 ㄴ타임라인에서 처리하도록 수�
 
 Javascript에서 멀티 쓰레드처럼 동작하기 위해 web worker를 사용.
 
-기본적으로 메인 쓰레드와 워커간에 데이터는 공유X 복사O
+기본적으로 메인 쓰레드와 워커간에 데이터는 공유X 복사O (postMessage)
 
 SharedArrayBuffer는 워커간에 같은 메모리 공간을 공유
 
