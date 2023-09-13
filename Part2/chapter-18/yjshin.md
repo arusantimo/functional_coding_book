@@ -82,6 +82,7 @@ cartTotal.addWatcher(updateTaxDom);
 
 ### 어니언 아키텍처
 반응형 아키텍처보다 더 넓은 범위에 사용하고, 서비스 전체를 구성하는데 사용한다.
+<img width="250" alt="스크린샷 2023-09-13 오전 9 09 34" src="https://github.com/arusantimo/functional_coding_book/assets/22004468/d65bc71d-e9c2-414a-8adc-c6361a89011e">
 
 >규칙    
 >1.현실 세계와 상호작용은 인터렉션 계층에서 해야한다.    
@@ -91,6 +92,7 @@ cartTotal.addWatcher(updateTaxDom);
 **계층**
 - 인터랙션 계층: 바깥 세상에 영향을 주고 받는 액션
 - 도메인 계층: 비즈니스 규칙을 정의하는 계산
+    | 컴퓨터 프로그래밍으로 문제를 해결하기 위해 만들 소프트웨어 프로그램을 위한 요구사항, 용어, 기능을 정의하는 학문 영역이 도메인 공학이다. - 위키백과
 - 언어 계층: 언어 유틸리티와 라이브러리
 
 > 액션: 부수효과, 순수하지 않은 함수      
@@ -104,7 +106,14 @@ cartTotal.addWatcher(updateTaxDom);
 함수형 아키텍쳐는 도메인 계층이 데이터베이스 계층에 의존하지 않는다. 
 데이터베이스 동작은 값을 바꾸거나 데이터베이스에 접근하기 때문에 **액션**이다.
 
-<img width="199" alt="스크린샷 2023-09-13 오전 8 48 10" src="https://github.com/arusantimo/functional_coding_book/assets/22004468/36b38236-ce4d-4f58-854c-facc21cf164e">
+<img width="500" alt="스크린샷 2023-09-13 오전 8 49 59" src="https://github.com/arusantimo/functional_coding_book/assets/22004468/8b0b64ef-3e2d-4d32-b8f5-b531c40db6cd">
 
+### 변경과 재사용이 쉬운 아키텍처
+어니언 아키텍처는 데이터베이스나 API 호출과 같은 외부 서비스(인터렉션 영역)를 바꾸기 가장 바꾸기 쉽다.    
+도메인 계층은 외부 서비스에 의존하지 않아서 테스트하기 좋다.
 
+<img width="774" alt="스크린샷 2023-09-13 오전 9 04 56" src="https://github.com/arusantimo/functional_coding_book/assets/22004468/569ee714-85a9-4ea1-925a-b8c5e17f69b3">
 
+### 도메인 규칙은 도메인 용어를 사용합니다.
+도메인을 계산으로 바꾸는건 
+액션과 도메인 동작(계산) 동작을 
